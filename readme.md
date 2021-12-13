@@ -1,5 +1,5 @@
 # Whatsapp API Tutorial
-
+kill proses : kill -9 $(lsof -t -i:{port})
 Hi, this is the implementation example of <a href="https://github.com/pedroslopez/whatsapp-web.js">whatsapp-web.js</a>
 
 Watch the tutorials:
