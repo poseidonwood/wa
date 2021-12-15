@@ -15,4 +15,4 @@ assets/images/whatsapp/profile/
 *.document
 *.ms-excel
 *.quicktime
-
+**/Image*

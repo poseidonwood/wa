@@ -697,7 +697,7 @@ app.post('/send-media', async (req, res) => {
   const number = phoneNumberFormatter(req.body.number);
   const caption = req.body.caption;
   const fileUrl = req.body.file;
-
+  console.log(fileUrl);
   // const media = MessageMedia.fromFilePath('./image-example.png');
   // const file = req.files.file;
   // const media = new MessageMedia(file.mimetype, file.data.toString('base64'), file.name);
