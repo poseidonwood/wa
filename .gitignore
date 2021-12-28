@@ -1,5 +1,5 @@
 node_modules/
-whatsapp-session.json
+*.json
 wadb.ts
 assets/images/whatsapp/profile/
 *.jpeg
