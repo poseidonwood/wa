@@ -408,7 +408,7 @@ async function saveChats(chats)
 
 // Path where the session data will be stored
 //const SESSION_FILE_PATH = '../messaging/auth_info.json';
-const SESSION_FILE_PATH = './whatsapp-session.json';
+const SESSION_FILE_PATH = './whatsapp-session'+port+'.json';
 
 // Load the session data if it has been previously saved
 let sessionData;
