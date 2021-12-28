@@ -25,7 +25,7 @@ var wa_files_folder="";
 let status = "NOT READY";
 let qrcode_return = null;
 let datauser = null;
-const callback_server = "https://0256-182-253-116-204.ngrok.io/wa-dashboard";
+const callback_server = "https://fekusa.xyz/sendwa/";
 app.use(express.json());
 app.use(express.urlencoded({
   extended: true
@@ -456,27 +456,9 @@ client.on('change_state', state => {
 });
 client.on('ready', async () => {
   status = "READY";
-  const chats = await client.getChats()
-    // .then(response=>console.log(response.length));
-    .then(response=>saveChats(response));
-  console.log('Client is ready!');
-//   const mContacts = await client.getContacts()
-//     // .then(response=>console.log(response.length));
-//     // .then(response=>console.log(response));
-//     .then(response=>getContacts(response));
-//   if (myArgs[0]=="sync")
-//   {
-//     const chats = await client.getChats()
-//     // .then(response=>console.log(response.length));
+//   const chats = await client.getChats()
 //     .then(response=>saveChats(response));
-//   }
-//   else
-//   {
-//     const mContacts = await client.getContacts()
-//     // .then(response=>console.log(response.length));
-//     // .then(response=>console.log(response));
-//     .then(response=>getContacts(response));
-//   }
+  console.log('Client is ready!');
 });
 
 // Save session values to the file upon successful auth
@@ -505,17 +487,18 @@ client.on('message', async msg => {
   await saveMessage(msg);
   let contact= msg.from;
   let contactnya = contact.replace('@c.us','');
-  // let url = callback_server+"/api/getreply.php?nomor="+contactnya+"&msg="+msg.body;
-  // https.get(url,(res) => {
-  //   let body = "";
-  //   res.on("data", (chunk) => {
-  //     body += chunk;
-  //   });
-  //   res.on("end", () => {});
-  //
-  // }).on("error", (error) => {
-  //   console.error(error.message);
-  // });
+  let url = callback_server+"webhookapi.php?nomor="+contactnya+"&msg="+msg.body;
+   https.get(url,(res) => {
+     let body = "";
+     res.on("data", (chunk) => {
+       body += chunk;
+     });
+     res.on("end", () => {});
+  
+   }).on("error", (error) => {
+     console.error(error.message);
+   });
+  console.log(url);
 });
 
 client.initialize();
