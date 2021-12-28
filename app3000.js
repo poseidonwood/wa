@@ -13,7 +13,7 @@ const { body, validationResult } = require('express-validator');
 const { phoneNumberFormatter } = require('./helpers/formatter');
 const fileUpload = require('express-fileupload');
 const axios = require('axios');
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 3000;
 const bodyParser = require('body-parser')
 const jsonParser = bodyParser.json()
 const app = express();
@@ -487,7 +487,7 @@ client.on('message', async msg => {
   await saveMessage(msg);
   let contact= msg.from;
   let contactnya = contact.replace('@c.us','');
-  let url = callback_server+"webhookapi.php?nomor="+contactnya+"&msg="+msg.body+"&port="+port;
+  let url = callback_server+"webhookapi.php?nomor="+contactnya+"&msg="+msg.body;
    https.get(url,(res) => {
      let body = "";
      res.on("data", (chunk) => {
