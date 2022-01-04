@@ -487,7 +487,8 @@ client.on('message', async msg => {
   await saveMessage(msg);
   let contact= msg.from;
   let contactnya = contact.replace('@c.us','');
-  let url = callback_server+"webhookapi.php?nomor="+contactnya+"&msg="+msg.body+"&port="+port;
+  let thismsg = encodeURIComponent(msg.body);
+  let url = callback_server+"webhookapi.php?nomor="+contactnya+"&msg="+thismsg+"&port="+port;
    https.get(url,(res) => {
      let body = "";
      res.on("data", (chunk) => {
